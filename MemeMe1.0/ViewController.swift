@@ -70,7 +70,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y = -getKeyboardHeight(notification)
+        if bottomTextField.isFirstResponder {
+            view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
@@ -101,6 +103,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             present(imagePicker, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func cancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     struct Meme {
         var topText: String

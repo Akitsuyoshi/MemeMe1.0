@@ -82,6 +82,9 @@
                                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="cancel"/>
+                                                <connections>
+                                                    <action selector="cancel" destination="BYZ-38-t0r" eventType="touchUpInside" id="i43-pu-ivE"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -113,7 +116,9 @@
                         <outlet property="bottomTextField" destination="Yrf-Px-LBy" id="rbL-Dg-OEg"/>
                         <outlet property="cameraButton" destination="qnU-3d-d1l" id="paY-xc-Te4"/>
                         <outlet property="cancelButton" destination="pnh-2Y-SI6" id="fKJ-Fc-MzQ"/>
+                        <outlet property="navBar" destination="pBI-zS-bmA" id="aeJ-nw-Tvd"/>
                         <outlet property="shareButton" destination="rSZ-Pg-GT3" id="9Y0-Bh-8pv"/>
+                        <outlet property="toolBar" destination="x9S-3M-ld1" id="EEC-AF-olM"/>
                         <outlet property="topTextField" destination="lzc-AS-vkY" id="CRD-KZ-IQQ"/>
                         <outlet property="uiImageView" destination="4nw-oB-cap" id="bD1-tI-5Tj"/>
                     </connections>
