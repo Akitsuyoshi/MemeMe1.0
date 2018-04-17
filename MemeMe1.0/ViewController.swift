@@ -18,6 +18,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var bottomTextField: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet var navBar: UINavigationBar!
+    @IBOutlet var toolBar: UIToolbar!
     
     
     let imagePicker = UIImagePickerController()
@@ -132,6 +134,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
+        self.toolBar.isHidden = true
+        self.navBar.isHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -140,6 +144,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
+        self.toolBar.isHidden = false
+        self.navBar.isHidden = false
         
         return memedImage
     }
