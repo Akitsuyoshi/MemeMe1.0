@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class mainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     // MARK: IBOutlet
     @IBOutlet weak var uiImageView: UIImageView!
@@ -17,7 +17,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet var topTextField: UITextField!
     @IBOutlet var bottomTextField: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet var navBar: UINavigationBar!
     @IBOutlet var toolBar: UIToolbar!
     
@@ -34,16 +34,18 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        
-        topTextField.text = "TOP"
-        topTextField.textAlignment = .center
-        topTextField.defaultTextAttributes = memeTextAttributes
-        
-        bottomTextField.text = "BOTTOM"
-        bottomTextField.textAlignment = .center
-        bottomTextField.defaultTextAttributes = memeTextAttributes
+        textFieldSet(textf: topTextField, dic: memeTextAttributes)
+        textFieldSet(textf: bottomTextField, dic: memeTextAttributes)
+    }
+    
+    func textFieldSet(textf: UITextField, dic: [String: Any]) {
+        textf.delegate = self
+        textf.contentVerticalAlignment = .center
+        textf.textAlignment = .center
+        textf.text = (textf == topTextField) ? "TOP": "BOTTOM"
+        textf.borderStyle = .none
+        textf.backgroundColor = .clear
+        textf.defaultTextAttributes = dic
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,34 +88,32 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
     }
     
-    // MARK: Actions to choose the image from photo, album, and camera
+    // MARK: Actions to choose the image from album, and camera
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .savedPhotosAlbum
-        present(imagePicker, animated: true, completion: nil)
+        imageSet(sourceType: .savedPhotosAlbum)
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         if cameraButton.isEnabled {
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .camera
-            imagePicker.cameraCaptureMode = .photo
-            imagePicker.modalPresentationStyle = .fullScreen
-            present(imagePicker, animated: true, completion: nil)
+            imageSet(sourceType: .camera)
         }
     }
     
-    @IBAction func cancel() {
-        dismiss(animated: true, completion: nil)
+    func imageSet(sourceType: UIImagePickerControllerSourceType) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = sourceType
+        if sourceType == .camera {
+            imagePicker.cameraCaptureMode = .photo
+            imagePicker.modalPresentationStyle = .fullScreen
+        }
+        present(imagePicker, animated: true, completion: nil)
     }
     
-    
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
+    @IBAction func cancel() {
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        uiImageView.image = nil
     }
     
     @IBAction func share() {
@@ -135,12 +135,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     func save() {
+        struct Meme {
+            var topText: String
+            var bottomText: String
+            var originalImage: UIImage
+            var memedImage: UIImage
+        }
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: uiImageView.image!, memedImage: generateMemedImage())
     }
     
     func generateMemedImage() -> UIImage {
-        
-        // TODO: Hide toolbar and navbar
         self.toolBar.isHidden = true
         self.navBar.isHidden = true
         
@@ -150,7 +154,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        // TODO: Show toolbar and navbar
         self.toolBar.isHidden = false
         self.navBar.isHidden = false
         
@@ -174,6 +177,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     // MARK : - UITextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textAlignment = .center
         if textField.text == "TOP" || textField.text == "BOTTOM" {
             textField.text = ""
         }
