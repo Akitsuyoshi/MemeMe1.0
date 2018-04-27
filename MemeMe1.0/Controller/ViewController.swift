@@ -135,13 +135,12 @@ class mainViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     func save() {
-        struct Meme {
-            var topText: String
-            var bottomText: String
-            var originalImage: UIImage
-            var memedImage: UIImage
-        }
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: uiImageView.image!, memedImage: generateMemedImage())
+        
+        let meme = Memes(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: uiImageView.image!, memedImage: generateMemedImage())
+        
+        // this is the code for saving to the app's delegate's memes array
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func generateMemedImage() -> UIImage {
