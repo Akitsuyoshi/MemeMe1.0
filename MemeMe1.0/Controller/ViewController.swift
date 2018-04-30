@@ -31,6 +31,7 @@ class mainViewController: UIViewController, UINavigationControllerDelegate, UIIm
         NSAttributedStringKey.strokeWidth.rawValue: -2
     ]
     
+    // MARK: life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
@@ -52,6 +53,9 @@ class mainViewController: UIViewController, UINavigationControllerDelegate, UIIm
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = (uiImageView.image == nil) ? false: true;
         subscribeToKeyboardNotification()
+        
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,7 +129,8 @@ class mainViewController: UIViewController, UINavigationControllerDelegate, UIIm
                 (activity, success, items, error) in
                 if (success && error == nil) {
                     self.save()
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popToRootViewController(animated: true)
+                    //self.dismiss(animated: true, completion: nil)
                 }else if (error != nil) {
                     // log the error
                     print(error!)

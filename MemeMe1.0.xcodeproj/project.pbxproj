@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3742ED4B20931C3C00870EB0 /* Memes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742ED4A20931C3C00870EB0 /* Memes.swift */; };
-		3742ED4E20931E3900870EB0 /* SentMemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742ED4D20931E3900870EB0 /* SentMemesCollectionViewController.swift */; };
-		3742ED5020931E5300870EB0 /* SentMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742ED4F20931E5300870EB0 /* SentMemesTableViewController.swift */; };
+		37B7D1052095AAB700DAD8AE /* SentMemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7D1042095AAB700DAD8AE /* SentMemesCollectionViewController.swift */; };
+		37B7D1072095AB0C00DAD8AE /* SentMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7D1062095AB0C00DAD8AE /* SentMemesTableViewController.swift */; };
+		37B7D10A2095ABF400DAD8AE /* SentMemesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7D1092095ABF400DAD8AE /* SentMemesTableViewCell.swift */; };
+		37B7D10C2095AC2100DAD8AE /* SentMemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7D10B2095AC2100DAD8AE /* SentMemesCollectionViewCell.swift */; };
+		37B7D10E2095B68100DAD8AE /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B7D10D2095B68100DAD8AE /* MemeDetailViewController.swift */; };
 		37C29107204B0795006273C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C29106204B0795006273C9 /* AppDelegate.swift */; };
 		37C29109204B0795006273C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C29108204B0795006273C9 /* ViewController.swift */; };
 		37C2910C204B0795006273C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37C2910A204B0795006273C9 /* Main.storyboard */; };
@@ -19,8 +22,11 @@
 
 /* Begin PBXFileReference section */
 		3742ED4A20931C3C00870EB0 /* Memes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memes.swift; sourceTree = "<group>"; };
-		3742ED4D20931E3900870EB0 /* SentMemesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesCollectionViewController.swift; sourceTree = "<group>"; };
-		3742ED4F20931E5300870EB0 /* SentMemesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewController.swift; sourceTree = "<group>"; };
+		37B7D1042095AAB700DAD8AE /* SentMemesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesCollectionViewController.swift; sourceTree = "<group>"; };
+		37B7D1062095AB0C00DAD8AE /* SentMemesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewController.swift; sourceTree = "<group>"; };
+		37B7D1092095ABF400DAD8AE /* SentMemesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewCell.swift; sourceTree = "<group>"; };
+		37B7D10B2095AC2100DAD8AE /* SentMemesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemesCollectionViewCell.swift; sourceTree = "<group>"; };
+		37B7D10D2095B68100DAD8AE /* MemeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
 		37C29103204B0795006273C9 /* MemeMe1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37C29106204B0795006273C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37C29108204B0795006273C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,10 +59,20 @@
 			isa = PBXGroup;
 			children = (
 				37C29108204B0795006273C9 /* ViewController.swift */,
-				3742ED4D20931E3900870EB0 /* SentMemesCollectionViewController.swift */,
-				3742ED4F20931E5300870EB0 /* SentMemesTableViewController.swift */,
+				37B7D1042095AAB700DAD8AE /* SentMemesCollectionViewController.swift */,
+				37B7D1062095AB0C00DAD8AE /* SentMemesTableViewController.swift */,
+				37B7D10D2095B68100DAD8AE /* MemeDetailViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		37B7D1082095ABBF00DAD8AE /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				37B7D1092095ABF400DAD8AE /* SentMemesTableViewCell.swift */,
+				37B7D10B2095AC2100DAD8AE /* SentMemesCollectionViewCell.swift */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 		37C290FA204B0795006273C9 = {
@@ -79,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				37C29106204B0795006273C9 /* AppDelegate.swift */,
+				37B7D1082095ABBF00DAD8AE /* CustomCells */,
 				3742ED4C20931E0900870EB0 /* Controller */,
 				3742ED4920931C1500870EB0 /* Model */,
 				37C2910A204B0795006273C9 /* Main.storyboard */,
@@ -162,10 +179,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				37C29109204B0795006273C9 /* ViewController.swift in Sources */,
+				37B7D10C2095AC2100DAD8AE /* SentMemesCollectionViewCell.swift in Sources */,
+				37B7D10A2095ABF400DAD8AE /* SentMemesTableViewCell.swift in Sources */,
 				3742ED4B20931C3C00870EB0 /* Memes.swift in Sources */,
-				3742ED4E20931E3900870EB0 /* SentMemesCollectionViewController.swift in Sources */,
-				3742ED5020931E5300870EB0 /* SentMemesTableViewController.swift in Sources */,
+				37B7D1052095AAB700DAD8AE /* SentMemesCollectionViewController.swift in Sources */,
+				37B7D1072095AB0C00DAD8AE /* SentMemesTableViewController.swift in Sources */,
 				37C29107204B0795006273C9 /* AppDelegate.swift in Sources */,
+				37B7D10E2095B68100DAD8AE /* MemeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
