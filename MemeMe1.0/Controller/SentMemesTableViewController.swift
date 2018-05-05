@@ -11,19 +11,30 @@ import UIKit
 private let reuseIdentifier = "SentMemesTableViewCell"
 
 class SentMemesTableViewController: UITableViewController {
+    // MARK: Properties
     
     var memes: [Memes]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
     }
+    
+    // MARK: Outlet
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    // MARK: life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+        
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -38,7 +49,9 @@ class SentMemesTableViewController: UITableViewController {
         let meme = self.memes[(indexPath as NSIndexPath).row]
 
         // Configure the cell...
-        cell.memes = [meme]
+        cell.memedImg.image = meme.memedImage
+        cell.textL.text = meme.topText + meme.bottomText
+        
         return cell
     }
 

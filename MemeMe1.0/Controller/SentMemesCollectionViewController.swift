@@ -36,17 +36,12 @@ class SentMemesCollectionViewController: UICollectionViewController {
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(SentMemesCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
         
         collectionView!.reloadData()
     }
@@ -62,9 +57,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
         // Configure the cell
-        cell.memedImg.image = meme.originalImage
-        cell.topLabel.text = meme.topText
-        cell.bootomLabel.text = meme.bottomText
+        cell.memedImg?.image = meme.memedImage
     
         return cell
     }
@@ -74,7 +67,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let meme = self.memes[(indexPath as NSIndexPath).row]
         detailMemeVC.meme = meme
         
-        navigationController?.pushViewController(detailMemeVC, animated: true)
+        self.navigationController?.pushViewController(detailMemeVC, animated: true)
     }
 
 }

@@ -14,5 +14,24 @@ class MemeDetailViewController: UIViewController {
     
     var meme: Memes!
     
+    // MARK: Outlet
     
+    @IBOutlet weak var memedImg: UIImageView!
+    
+    
+    // MRAK: life cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.memedImg.image = meme.memedImage
+        
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
 }
+

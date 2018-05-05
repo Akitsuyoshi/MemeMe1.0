@@ -115,9 +115,9 @@ class mainViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
     @IBAction func cancel() {
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        uiImageView.image = nil
+        if let navigationController = self.navigationController {
+            navigationController.popViewController(animated: true)
+        }
     }
     
     @IBAction func share() {
@@ -129,10 +129,10 @@ class mainViewController: UIViewController, UINavigationControllerDelegate, UIIm
                 (activity, success, items, error) in
                 if (success && error == nil) {
                     self.save()
-                    self.navigationController?.popToRootViewController(animated: true)
-                    //self.dismiss(animated: true, completion: nil)
+                    if let navigationController = self.navigationController {
+                        navigationController.popViewController(animated: true)
+                    }
                 }else if (error != nil) {
-                    // log the error
                     print(error!)
                 }
             }

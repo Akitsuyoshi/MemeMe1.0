@@ -11,7 +11,5 @@ import UIKit
 class SentMemesCollectionViewCell: UICollectionViewCell {
     // MARK: Outlet
     
-    @IBOutlet var topLabel: UILabel!
-    @IBOutlet var bootomLabel: UILabel!
     @IBOutlet var memedImg: UIImageView!
 }
