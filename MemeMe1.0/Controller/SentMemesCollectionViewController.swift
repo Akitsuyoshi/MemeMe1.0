@@ -15,8 +15,9 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     var memes: [Memes]! {
         let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.memes
+        if let appDelegate = object as? AppDelegate {
+            return appDelegate.memes
+        }
     }
     
     // MARK: Outlet

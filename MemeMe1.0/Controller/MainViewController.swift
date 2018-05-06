@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  MemeMe1.0
 //
 //  Created by 秋山剛 on 2018/03/04.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class mainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class MainViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     // MARK: IBOutlet
     @IBOutlet weak var uiImageView: UIImageView!
